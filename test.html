@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <div id="welcome-container">
+        <!-- The welcome message or form will be injected here -->
+    </div>
+    <script>
+        // Function to generate a UUID
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        // Check if user details already exist
+        const userName = localStorage.getItem('userName');
+        const uniqueID = localStorage.getItem('deviceUniqueID');
+
+        const welcomeContainer = document.getElementById('welcome-container');
+
+        if (!userName || !uniqueID) {
+            // First-time visitor
+            const formHTML = `
+                <h2>Welcome! Please enter your name:</h2>
+                <input type="text" id="name-input" placeholder="Enter your name" />
+                <button id="store-button">Store</button>
+            `;
+            welcomeContainer.innerHTML = formHTML;
+
+            // Handle button click to store user details
+            document.getElementById('store-button').addEventListener('click', () => {
+                const nameInput = document.getElementById('name-input').value.trim();
+                if (nameInput) {
+                    // Store name and generate a UUID
+                    localStorage.setItem('userName', nameInput);
+                    const newUUID = generateUUID();
+                    localStorage.setItem('deviceUniqueID', newUUID);
+
+                    // Display the welcome message
+                    welcomeContainer.innerHTML = `<h2>Welcome, ${nameInput}! Your unique ID is stored.</h2>`;
+                } else {
+                    alert('Please enter a valid name.');
+                }
+            });
+        } else {
+            // Returning visitor
+            welcomeContainer.innerHTML = `<h2>Hello, ${userName}! Welcome back.</h2>`;
+        }
+    </script>
+</body>
+</html>
