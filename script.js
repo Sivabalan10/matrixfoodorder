@@ -1,5 +1,9 @@
 
 let count = 0;
+
+function order_pandian(){
+    window.location.href = "https://wa.me/9600972314";
+}
 function guidelines(){
     let gui = document.getElementById('gui');
     let but = document.getElementById('butg');
