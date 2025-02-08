@@ -2,6 +2,7 @@
 let count = 0;
 
 function order_pandian(){
+    alert("Order method changed for this hotel.Order through Whatsapp!")
     window.location.href = "https://wa.me/+919600972314";
 }
 function guidelines(){
