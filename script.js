@@ -5,6 +5,11 @@ function order_pandian(){
     alert("Order method changed for this hotel.Order through Whatsapp!")
     window.location.href = "https://wa.me/+919600972314";
 }
+function order_taj(){
+    alert("Order method changed for this hotel.Order through Whatsapp!")
+    window.location.href = "https://wa.me/+919094711805";
+}
+
 function guidelines(){
     let gui = document.getElementById('gui');
     let but = document.getElementById('butg');
